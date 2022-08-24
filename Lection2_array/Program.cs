@@ -52,7 +52,7 @@ void arrayFill(int[] numbers)
     int index = 0;
     while (index < length)
     {
-        numbers[index] = newRandom().Next(1,10);
+        numbers[index] = new Random().Next(1, 10);
         index++;
     }
 }
@@ -61,16 +61,41 @@ void printArray(int[] numbers2)
 {
     int length = numbers2.Length;
     int position = 0;
-    while(position < length)
+    while (position < length)
     {
         Console.WriteLine(numbers2[position]);
         position++;
     }
 }
 
-int [] array77 = new int [10]; //задаем кол-во эл-ов массива
+//метод который находит какой індекс у заданного пользователем значенія
+int findIndex(int[] numbers, int userNumber)
+{
+    int count = numbers.Length;
+    int index = 0;
+    int position = -1;
 
-arrayFill(array77); //создаём массів функцией аргументом которой является массив
-printArray(array77); //показываем эту функцию на экран
+    while(numbers.Length > index)
+    {
+        if(numbers[index] == userNumber)
+        {
+            position = index;
+            break;
+        }
+        index++;    
+    }
+    return position;
+}
+
+int[] array77 = new int[10]; //задаем кол-во эл-ов массива
+
+ arrayFill(array77); //создаём массів функцией аргументом которой является массив
+ printArray(array77); //показываем эту функцию на экран
 
 
+Console.WriteLine("enter numbers");
+int userNumber = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine();
+int pos = findIndex(array77, userNumber);
+Console.WriteLine(pos);
